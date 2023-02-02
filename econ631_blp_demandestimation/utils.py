@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm_
-from statsmodels.sandbox.regression.gmm import GMM, IV2SLS
+from statsmodels.sandbox.regression.gmm import GMM, IV2SLS, IVGMM
 
 from pandas.testing import assert_index_equal
 
@@ -23,7 +23,7 @@ def run_2SGMM(df:pd.DataFrame, instrument:list):
   X = sm_.add_constant(df[["price", "xvar"]])
   Z = sm_.add_constant(df[instrument + ["xvar"]])
   logit_2sgmm = IVGMM(endog=Y,exog=X,instrument=Z).fit();
-  constant, alpha, beta = logit_2sls.params
+  constant, alpha, beta = logit_2sgmm.params
   print(logit_2sgmm.summary())
   return logit_2sgmm
 

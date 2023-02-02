@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import gumbel_r, multinomial, norm
 
-us_census = pd.read_csv("census-ageincome-joint-small.csv", index_col=0).astype(int)
+us_census = pd.read_csv("./data/census-ageincome-joint-small.csv", index_col=0).astype(int)
 census_density = (1./us_census.sum().sum())*us_census
 n_age, n_inc = us_census.shape
 
