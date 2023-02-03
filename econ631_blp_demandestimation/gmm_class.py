@@ -922,6 +922,8 @@ class NFP(GMM):
             'mu_est': self.idiosyncratic_valuations(gmmres.params),
             'delta_est': self.delta,
             'moms': self.moms,
+            'weights': gmmres.weights,
+            'obj': (1./len(self.instrument_list))*np.dot(np.dot(self.moms,gmmres.weights),self.moms.T)[0,0],
         }
         return results
     

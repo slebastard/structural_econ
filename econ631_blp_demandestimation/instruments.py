@@ -118,3 +118,10 @@ def DifferentiationIV(df):
     df2 = df2.fillna(0)
     df2.rename(columns={'prod_char_dist': 'diff_iv', 'prod_band0': 'diff_iv_prodband0', 'prod_band1': 'diff_iv_prodband1', 'prod_band2': 'diff_iv_prodband2'}, inplace=True)
     return df2
+
+
+def normalize_instr(df:pd.DataFrame, instruments:list):
+    df_normed = df.copy()
+    for instr in instruments:
+        df_normed[instr] = (df_normed[instr] - df_normed[instr].min()) / (df_normed[instr].max() - df_normed[instr].min())
+    return df_normed
