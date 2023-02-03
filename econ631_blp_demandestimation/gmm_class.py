@@ -819,7 +819,7 @@ class NFP(GMM):
         theta_2: np.array
         dmd_s
     """
-    def __init__(self, mkt_df: pd.DataFrame, cons: pd.DataFrame, instruments: list[str], tol_fp: float=1e-6, tol_gmm: float=1e-6, verbose=False):
+    def __init__(self, mkt_df: pd.DataFrame, cons: pd.DataFrame, instruments: list, tol_fp: float=1e-6, tol_gmm: float=1e-6, verbose=False):
         self.mkt_data = mkt_df.copy()
         self.cons_data  = cons.copy()
 
